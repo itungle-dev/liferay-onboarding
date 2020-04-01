@@ -44,12 +44,6 @@ export GRADLE_OPTS="-Xms2g -Xmx4g"
    - Then run `ant clean deploy`\
      NOTE: `ant clean deploy` might not build in portlets but it might failed. Not sure how to fix this
 
-##### Set up Database:
-
-1. Download one of the backup .sql on files.liferay.com
-2. Set up MySQL with user: root and no password
-3. example command: `mysql -u root lrdcom_web < '/home/tungle-liferay/Downloads/developer_lportal-2020-02-18_11-00-PST.sql'`
-
 #### DXP 7+ Process
 
 - Java version 8+
@@ -72,14 +66,22 @@ export GRADLE_OPTS="-Xms2g -Xmx4g"
 
 #### MySQL Set up Process:
 
-- Create new database for every new project if configure with MySQL
-- NOTE: 'lrdcom_web' is 6.1.x
-- Drop JDBC driver into Liferay bundle/tomcat/lib/ext folder
-- Put this in portal-ext.properties
+##### Set up Database (6.1.x):
+
+1. Download one of the backup .sql on files.liferay.com
+2. Set up MySQL with user: root and no password
+3. example command: `mysql -u root lrdcom_web < '/home/tungle-liferay/Downloads/developer_lportal-2020-02-18_11-00-PST.sql'`
+
+##### Set up Database (7.0.+):
+
+1. Create new database for every new project if configure with MySQL
+2. Drop JDBC driver into Liferay bundle/tomcat/lib/ext folder
+3. Put this in portal-ext.properties
+4. `$NAME` will be the database empty/filled database. As long as you create a database name `$NAME` in your local machine, when you run tomcat bundle, it should automatically fill database with tables/schemas.
 
 ```
 jdbc.default.driverClassName=com.mysql.jdbc.Driver
-jdbc.default.url=jdbc:mysql://localhost/lfris_tma?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&serverTimezone=PST
+jdbc.default.url=jdbc:mysql://localhost/$NAME?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&serverTimezone=PST
 jdbc.default.username=root
 jdbc.default.password=
 ```
