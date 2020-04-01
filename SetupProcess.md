@@ -96,7 +96,7 @@ jdbc.default.password=
 4. Solve your problem. And clean up and debug/sysout.
 5. When you ready to do a commit. Run `ant format-source` for 6.1.x stuff or `./gradlew formatSource` for the 7.0+
    - If you are changing anything in language/properties file, then `ant build-lang` for 6.1.x or `./gradlew buildLang` for 7.0+
-6. Make a commit. with message, "\$TicketName; Description of the solution or outcome"
+6. Make a commit. with message, "\$TicketNum; Description of the solution or outcome"
 7. Create a pull request to Ryan or your manager instead of liferay repo. if use, github cli, gh pr create --web will show a web UI to send the right pull request to the right person and repo
 
 ## Naming convention
@@ -122,3 +122,12 @@ jdbc.default.password=
    > params.put("storeName", ECommerceConstants.STORE_NAME_MARKETPLACE);
    > params.put("type", ECDocumentEntryConstants.TYPE_SALES_ORDER);
    > ```
+
+## Step for Git
+
+1. Create new branch: `git checkout -b $TicketNnum-$SmallDescription`
+2. Make small commit by:
+   - `git add -p` (review your add)
+   - `git commit -m "$TicketNum; $Some description"`
+3. create pull request to your manager's repo.
+   - `gh pr create -b $branch -u $github_username`
