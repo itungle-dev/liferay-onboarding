@@ -98,3 +98,27 @@ jdbc.default.password=
    - If you are changing anything in language/properties file, then `ant build-lang` for 6.1.x or `./gradlew buildLang` for 7.0+
 6. Make a commit. with message, "\$TicketName; Description of the solution or outcome"
 7. Create a pull request to Ryan or your manager instead of liferay repo. if use, github cli, gh pr create --web will show a web UI to send the right pull request to the right person and repo
+
+## Naming convention
+
+1. DONT USE "to", "with", "for" for method or function name
+2. Try to include the object name in the method or function name
+   > DONT: updateStatusECDocumentToVoid
+   > DO: updateStaleECDocument
+3. Make sure to make lines are alphabetically order if the code lines are starting the same
+
+   > ```
+   > #### DONT
+   > params.put("modifiedDateLT", date);
+   > params.put("storeName", ECommerceConstants.STORE_NAME_MARKETPLACE);
+   > params.put("status", ECDocumentEntryConstants.STATUS_UNPAID);
+   > params.put("type", ECDocumentEntryConstants.TYPE_SALES_ORDER);
+   > ```
+
+   > ```
+   > #### DO
+   > params.put("modifiedDateLT", date);
+   > params.put("status", ECDocumentEntryConstants.STATUS_UNPAID);
+   > params.put("storeName", ECommerceConstants.STORE_NAME_MARKETPLACE);
+   > params.put("type", ECDocumentEntryConstants.TYPE_SALES_ORDER);
+   > ```
